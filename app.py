@@ -10,6 +10,11 @@ from flask_cors import CORS
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
+from dotenv import load_dotenv
+load_dotenv()
+import os
+PORT = os.environ.get("PORT")
+print("PORT:", PORT)
 
 # ——— Setup Flask —————————————————————————————————————————————————————————————
 app = Flask(__name__)
@@ -104,4 +109,4 @@ def home():
     return "✅ Crop Yield Prediction API (no‑year) is running!"
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000, debug=True)
+    app.run(host='0.0.0.0', port=PORT, debug=True)
